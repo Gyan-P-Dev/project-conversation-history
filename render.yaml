@@ -1,0 +1,22 @@
+databases:
+  - name: project_conversation_history_db
+    databaseName: project_conversation_task_production
+    user: project_conversation_task
+    plan: free
+
+services:
+  - type: web
+    name: project_conversation_history_task
+    runtime: ruby
+    plan: free
+    buildCommand: "./bin/render-build.sh"
+    startCommand: "bundle exec rails server -b 0.0.0.0 -p 10000"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: project_conversation_history_db
+          property: connectionString
+      - key: RAILS_MASTER_KEY
+        sync: false
+      - key: WEB_CONCURRENCY
+        value: 2
