@@ -1,0 +1,23 @@
+doctype html
+html
+  head
+    meta charset="UTF-8"
+    title Mention Notification
+    style
+      | body { font-family: Arial, sans-serif; background-color: #f4f4f4; padding: 20px; }
+      | .container { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+      | .header { font-size: 20px; font-weight: bold; color: #333; }
+      | .content { margin-top: 15px; font-size: 16px; color: #555; }
+      | .footer { margin-top: 20px; font-size: 14px; color: #777; }
+      | .button { display: inline-block; padding: 10px 15px; background: #4CAF50; color: white; text-decoration: none; border-radius: 5px; margin-top: 15px; }
+
+  body
+    .container
+      .header You were mentioned in a comment!
+      .content
+        p Hi #{@user.username},  
+        p You were mentioned in a comment by #{@comment.user.username}. Here’s what they said:
+        blockquote
+          em #{@comment.content}
+      .footer
+        p This is an automated notification. Please do not reply to this email.

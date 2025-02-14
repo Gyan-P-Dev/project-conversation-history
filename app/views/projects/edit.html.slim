@@ -1,0 +1,8 @@
+.bg-white.shadow-2xl.rounded-lg.mx-auto.mt-6.p-8.w-full.max-w-5xl.border.border-gray-300
+  .bg-white-600.text-white.p-4.flex.justify-between.items-center
+    = render 'projects/user_info'
+
+  .mt-8
+    h1.text-2xl.font-semibold.text-gray-700.mb-6 
+    = turbo_frame_tag dom_id(@project) do
+      = render 'projects/form', project: @project
